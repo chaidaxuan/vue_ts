@@ -46,6 +46,9 @@
     <span>toggle: {{ toggle }}</span>
     <button v-on:click="doSomething()"> </button>
   </div>
+  <div>
+    <ul><li id='name'>{{name}}</li><li>{{age}}</li><li>{{city}}</li></ul>
+  </div>
 </div>
 </div>
 </div>
@@ -64,6 +67,9 @@ export default class HelloWorld extends Vue {
   picked: Array<string> = []
   selected: Array<string> = []
   toggle: Array<string> = []
+  name: string = ''
+  age : string = ''
+  city: string = ''
 
   options = [
     { text: 'One', value: 'A' },
@@ -80,12 +86,24 @@ export default class HelloWorld extends Vue {
   };
   created (): void {
     // `this` 指向 vm 实例
+    var y = document.getElementById('name')
+    console.log(y)
+  }
+  mounted () {
     console.log('created')
+    this.name = 'paula'
+    this.age = '12'
+    this.city = '上海'
+    var x = document.getElementById('name')
+    console.log(x)
   }
   change (e:any) {
     console.log(e)
     console.log(e.target.checked)
-  }
+  };
+  computed () {
+    console.log(this.message)
+  };
 }
 </script>
 
